@@ -2,7 +2,7 @@
   "name": "elearning",
   "version": "1.0.0",
   "description": "SPL project",
-  "main": "index.html",
+  "main": "app.js",
   "scripts": {
     "start": "npm run lite",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,20 +12,32 @@
     "type": "git",
     "url": "git+https://github.com/Dead-Code-18/ELearning.git"
   },
-  "author": "MD. Reyanus Salehin",
+  "author": "DeadCode",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Dead-Code-18/ELearning/issues"
   },
   "homepage": "https://github.com/Dead-Code-18/ELearning#readme",
   "devDependencies": {
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.5.3",
     "bootstrap-social": "^5.1.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
+    "mongoose": "^5.10.17",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
     "popper.js": "^1.16.1"
-  }
+  },
+  "keywords": [
+    "e-learning"
+  ]
 }
