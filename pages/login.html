@@ -19,7 +19,17 @@
 
 	<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
         <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <a class="navbar-brand mr-auto" href="../index.html">ELearning</a>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                	<li class="nav-item"><a class="nav-link" href="./aboutus.html">   </a></li>
+                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -54,11 +64,40 @@
     </div>
 
     <footer class="footer">
-        <div class="row justify-content-center">
-        	<div class="col-auto">
+        <div class="container">
+            <div class="row">             
+                <div class="col-4 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./aboutus.html">About</a></li>
+                        <li><a href="./contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-7 offset-sm-1 col-sm-4">
+                    <h5>Contact Information</h5>
+                    <i class="fa fa-phone"></i>: +880 1608 537383<br>
+                    <i class="fa fa-envelope"></i>:<a href="mailto:dcode180042@gmail.com"> dcode180042@gmail.com</a>
+                    <div class="btn-group" role="group">
+                    <a role="button" class="btn btn-primary" href="tel:+8801608537383"><i class="fa fa-phone"></i>Call</a>
+                    <a role="button" class="btn btn-success" href="mailto:dcode180042@gmail.com"><i class="fa fa-envelope-o"></i>Email</a>
+                </div>
+                </div>
+                <div class="col-12 col-sm-4 align-self-center">
+                    <div class="text-center">
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row copyright"></div>
+            <div class="row justify-content-center">  
+                <div class="col-auto">
                     <p>© Copyright 2020 Dead-Code-18</p>
                 </div>
-           </div>
+            </div>
     </footer>
 
 	<script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
