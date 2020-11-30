@@ -43,3 +43,7 @@ body {
 .navbar-dark {
 	background-color: #512DAB;
 }
+
+.copyright {
+	min-height: 25px;
+}

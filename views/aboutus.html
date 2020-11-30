@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="../css/styles.css">
-
-    <title>Sign Up|ELearing</title>
+    <title>ELearning</title>
 </head>
-<body>
 
+<body>
 	<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
@@ -25,68 +24,39 @@
             <a class="navbar-brand mr-auto" href="../index.html">ELearning</a>
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html">   </a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About Us</a></li>
+                	<li class="nav-item"><a class="nav-link" href="#">   </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-info fa-lg"></span> About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="./login.html"><span class="fa fa-sign-in fa-lg"></span> Log In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./signup.html"><span class="fa fa-plus fa-lg"></span> Sign Up</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-    	<div class="row-content">
-    		<div class="col-12">
-    			Already have an account? <a href="./login.html">Log In</a>
-    		</div>
-    	</div>
-
-        <div class="row row-content">
-            <div class="col-10 col-md-8 col-lg-6">
-                <form class="form-example" action="" method="post"> 
-                    <h3 class="text-secondary text-height">Sign Up</h1>
-                    <div class="form-group">
-                        <label for="fname">First Name</label>
-                        <input type="text" class="form-control" id="fname" placeholder="First Name" name="fname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name</label>
-                        <input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" pattern=".{5,50}" required title="Password must be between 5 and 50 charactrers">
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="approve" id="approve" value="" required>
-                            <label class="form-check-label" for="approve">
-                                By signing up, you agree to our Terms of Use and Privacy Policy.
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-primary btn-customized">Sign Up</button>
-                    </div>
-                </form>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-6">
+                    <h1>ELearning</h1>
+                    <p></p>
+                </div>
+                <div class="col-12 col-sm">
+                </div>
             </div>
-        </div> 
-
-        <div class="row-content">   
         </div>
-    </div>
+    </header>	    
 
-    <footer class="footer">
+   <footer class="footer">
         <div class="container">
             <div class="row">             
                 <div class="col-4 offset-1 col-sm-2">
                     <h5>Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="../index.html">Home</a></li>
-                        <li><a href="./aboutus.html">About</a></li>
+                        <li><a href="#">About</a></li>
                         <li><a href="./contactus.html">Contact</a></li>
                     </ul>
                 </div>
@@ -116,9 +86,9 @@
             </div>
     </footer>
 
-	<script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    
+
 </body>
 </html>
