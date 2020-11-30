@@ -35,7 +35,7 @@ passport.deserializeUser(user.deserializeUser());
 
 //============== routing code =======================
 
-app.get("/",function(req, res){ 
+app.get("/index",function(req, res){ 
    res.render("index");
    console.log("going to index");
 });
@@ -68,22 +68,35 @@ app.get("/login", function(req, res){
 
 });
 app.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/index",
     failureRedirect: "/login"
 }) ,function(req,res){
     console.log("going to .........");
 });
 
-
+//logout req
 app.get("/logout", function(req, res){
 
     req.logout();
-    res.redirect("/");
+    res.redirect("/index");
 
 });
 
+//demo secret page for testing
 app.get("/secret",isLoggedIn,function(req,res){
     res.render("secret");
+});
+
+app.get("/aboutus", function(req, res){    
+    res.render("aboutus");
+    console.log("going to aboutus");
+
+});
+
+app.get("/contactus", function(req, res){    
+    res.render("contactus");
+    console.log("going to contactus");
+
 });
 
 function isLoggedIn(req, res, next){
