@@ -35,10 +35,18 @@
                     <li class="nav-item"> <a class="nav-link" href="/contactus">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <% if(currentuser){ %>
+                        <li class="nav-item"><a class="nav-link" href="/logout"><span class="fa fa-sign-in fa-lg"></span> Log
+                            out</a></li>
+                    <%} else{%>
+
                     <li class="nav-item"><a class="nav-link" href="/login"><span class="fa fa-sign-in fa-lg"></span> Log
                             In</a></li>
                     <li class="nav-item"><a class="nav-link" href="/signup"><span class="fa fa-plus fa-lg"></span> Sign
                             Up</a></li>
+
+                    <% } %>
+
                 </ul>
 
             </div>
