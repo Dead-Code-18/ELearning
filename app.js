@@ -65,8 +65,8 @@ app.post("/signup", function(req, res){
 app.get("/login", function(req, res){    
     res.render("login");
     console.log("going to signin");
-
 });
+
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/index",
     failureRedirect: "/login"
@@ -76,7 +76,6 @@ app.post("/login", passport.authenticate("local", {
 
 //logout req
 app.get("/logout", function(req, res){
-
     req.logout();
     res.redirect("/index");
 
@@ -106,6 +105,6 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 }
 
-app.listen(3000, function(){
+app.listen(8000, function(){
     console.log("server running...");
 });
