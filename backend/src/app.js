@@ -1,18 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const env = require("dotenv");
-const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
+const categoryRoutes = require("./routes/category");
+const courseRoutes = require("./routes/course");
 
 
 var app = express();
 app.set('view engine', 'ejs');
 env.config();
 
-app.use(bodyParser.json());
-app.use(bodyParser.raw());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.json());
+app.use(express.raw());
 
 mongoose.connect("mongodb://localhost/e-learning", {
     useNewUrlParser: true,
@@ -30,8 +29,8 @@ app.listen(3000, function () {
 });
 
 app.use("/auth", authRoutes);
-
-
+app.use("/category",categoryRoutes);
+app.use("/course",courseRoutes);
 
 
 
