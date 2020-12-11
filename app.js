@@ -35,7 +35,7 @@ passport.deserializeUser(user.deserializeUser());
 
 //============== routing code =======================
 
-app.get("/index",function(req, res){ 
+app.get("/",function(req, res){ 
     res.render("index", 
     {
         currentuser: req.user,
