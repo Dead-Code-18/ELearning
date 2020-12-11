@@ -99,8 +99,12 @@ app.get("/logout", function(req, res){
 });
 
 //demo secret page for testing
-app.get("/secret",isLoggedIn,function(req,res){
-    res.render("secret");
+app.get("/courses", isLoggedIn,function(req,res){
+    res.render("courses", 
+    {
+        currentuser: req.user,
+
+    });
 });
 
 app.get("/aboutus", function(req, res){    
