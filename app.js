@@ -98,6 +98,12 @@ app.get("/contactus", function(req, res){
 
 });
 
+app.get("/profile", function(req, res){    
+    res.render("profile");
+    console.log("going to profile");
+
+});
+
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
