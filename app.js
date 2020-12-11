@@ -36,14 +36,22 @@ passport.deserializeUser(user.deserializeUser());
 //============== routing code =======================
 
 app.get("/index",function(req, res){ 
-   res.render("index", {currentuser: req.user});
+    res.render("index", 
+    {
+        currentuser: req.user,
+
+    });
    console.log("going to index");
 });
 
 
 //signup page reqs
 app.get("/signup", function(req,res){
-    res.render("signup");
+    res.render("signup", 
+    {
+        currentuser: req.user,
+
+    });
     console.log("going to signup");
 
 });
@@ -63,8 +71,17 @@ app.post("/signup", function(req, res){
 
 //login page reqs
 app.get("/login", function(req, res){    
-    res.render("login");
+    res.render("login", 
+    {
+        currentuser: req.user,
+
+    });
     console.log("going to signin");
+});
+
+app.get("/test", function(req, res){    
+    res.render("test");
+    console.log("testing");
 });
 
 app.post("/login", passport.authenticate("local", {
@@ -87,19 +104,31 @@ app.get("/secret",isLoggedIn,function(req,res){
 });
 
 app.get("/aboutus", function(req, res){    
-    res.render("aboutus");
+    res.render("aboutus", 
+    {
+        currentuser: req.user,
+
+    });
     console.log("going to aboutus");
 
 });
 
 app.get("/contactus", function(req, res){    
-    res.render("contactus");
+    res.render("contactus", 
+    {
+        currentuser: req.user,
+
+    });
     console.log("going to contactus");
 
 });
 
 app.get("/profile", function(req, res){    
-    res.render("profile");
+    res.render("profile", 
+    {
+        currentuser: req.user,
+
+    });
     console.log("going to profile");
 
 });

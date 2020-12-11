@@ -1,0 +1,26 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index">ELearning</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="Navbar">
+            <ul class=" navbar-nav mr-auto">
+                <li <% if (pagename === 'courses') { %>class="nav-item active" <% } %>> <a class="nav-link" href="/secret">course page</a></li>
+                <li <% if (pagename === 'about') { %>class="nav-item active" <% } %>> <a class="nav-link" href="/aboutus">About</a></li>
+                <li <% if (pagename === 'contact') { %>class="nav-item active" <% } %>> <a class="nav-link" href="/contactus">Contact</a></li>
+            </ul>   
+            <ul class="navbar-nav ml-auto">
+                <% if(currentuser){ %>
+                    <li class="nav-item"><a class="nav-link" href="/logout"><span class="fa fa-sign-in fa-lg"></span> Log out</a></li>
+                <% } else { %>
+                <li <% if (pagename === 'login') { %>class="nav-item active" <% } %>><a class="nav-link" href="/login"><span class="fa fa-sign-in fa-lg"></span> Log In</a></li>
+                <li <% if (pagename === 'signup') { %>class="nav-item active" <% } %>><a class="nav-link" href="/signup"><span class="fa fa-plus fa-lg"></span> Sign Up</a></li>
+                <% } %>
+            </ul>        
+        </div>
+    </div>
+</nav>
