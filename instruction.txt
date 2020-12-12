@@ -13,7 +13,7 @@ npm -v
 //go to the project folder: (home of the project)
 
 npm init   //this will build the package.json file
-npm install nodemon --save-dev
+npm install nodemon --save
 
 
 //add node-modules to .gitignore, it doesn't need to keep in the github.
