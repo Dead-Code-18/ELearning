@@ -109,6 +109,14 @@ app.get("/courses", isLoggedIn,function(req,res){
     });
 });
 
+app.get("/coursepage", function(req,res){
+    res.render("coursepage", 
+    {
+        currentuser: req.user,
+
+    });
+});
+
 app.get("/aboutus", function(req, res){    
     res.render("aboutus", 
     {

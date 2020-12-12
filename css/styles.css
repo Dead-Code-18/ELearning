@@ -4,6 +4,7 @@
     	overflow-x: hidden;
     	padding: 50px 0px 0px 0px;
     	z-index: 0;
+        background-color: #EAECEE;
     }
 
     .row-header {
@@ -227,6 +228,10 @@
 
     .borderNone {
         border: none;
+    }
+
+    .bg {
+        background-color: #EAECEE;
     }
 
     input.input-box, textarea { background: #E0E0E0; }
