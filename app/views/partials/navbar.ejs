@@ -22,12 +22,12 @@
                 <li <% if (pagename === 'contact') { %>class="nav-item active" <% } %>> <a class="nav-link" href="/contactus">Contact</a></li>
             </ul>   
             <ul class="navbar-nav ml-auto">
-                <% if(currentuser){ %>
-                    <li class="nav-item"><a class="nav-link" href="/profile"><span class="fa fa-sign-in fa-lg"></span>My Account</a></li>
+                <% if(user){ %>
+                    <li class="nav-item"><a class="nav-link" href="/auth/profile?authorization=Bearer " + <%=token%>><span class="fa fa-sign-in fa-lg"></span>My Account</a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout"><span class="fa fa-sign-in fa-lg"></span> Log out</a></li>
                 <% } else { %>
-                <li <% if (pagename === 'login') { %>class="nav-item active" <% } %>><a class="nav-link" href="/login"><span class="fa fa-sign-in fa-lg"></span> Log In</a></li>
-                <li <% if (pagename === 'signup') { %>class="nav-item active" <% } %>><a class="nav-link" href="/signup"><span class="fa fa-plus fa-lg"></span> Sign Up</a></li>
+                <li <% if (pagename === 'login') { %>class="nav-item active" <% } %>><a class="nav-link" href="auth/signin"><span class="fa fa-sign-in fa-lg"></span> Log In</a></li>
+                <li <% if (pagename === 'signup') { %>class="nav-item active" <% } %>><a class="nav-link" href="auth/signup"><span class="fa fa-plus fa-lg"></span> Sign Up</a></li>
                 <% } %>
             </ul>        
         </div>

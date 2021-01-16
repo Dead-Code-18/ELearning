@@ -11,6 +11,8 @@ exports.signup = (req, res) => {
         password
     } = req.body;
 
+    console.log(req.body);
+
     User.findOne(
         { email: email }
     ).exec(async (error, user) => {
@@ -36,8 +38,9 @@ exports.signup = (req, res) => {
             }
 
             if (data) {
-                return res.status(201).json({
-                    message: "User created successfully"
+
+                return res.render("signin", {
+                    user: req.user
                 });
             }
         });
@@ -46,6 +49,8 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
+
+    console.log(req.body);
     User.findOne(
         {
             email: req.body.email
@@ -58,7 +63,8 @@ exports.signin = (req, res) => {
 
                 const token = jwt.sign({ uid: user._id }, "secretKey", { expiresIn: "10h" });
                 const { _id, firstName, lastName, fullName, email, username } = user;
-                res.status(200).json({
+
+                return res.render("index", {
                     token,
                     user: {
                         _id, firstName, lastName, email, username, fullName
@@ -72,7 +78,9 @@ exports.signin = (req, res) => {
             }
 
         } else {
-            return res.status(400).json({ message: "Something went wrong" });
+            return res.status(400).json({
+                message: "user not found. please signup"
+            })
         }
     });
 

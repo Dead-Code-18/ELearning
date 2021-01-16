@@ -1,6 +1,8 @@
 <%- include('./partials/header', {title:'About Us|ELearning'}); %>
-<%- include('./partials/navbar', {pagename:'index', currentuser:currentuser}); %>    
-
+<%- include('./partials/navbar', {pagename:'index'}); %>    
+<script>
+    localStorage.setItem("token", "<%= JSON.stringify(token) %>");
+</script>
 <div class="row">   
     <div class="tiledBackground col-12 info-form">
         <div class="row-content"></div>
