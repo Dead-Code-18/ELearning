@@ -2,8 +2,8 @@ const express = require("express");
 const multer = require("multer");
 const shortid = require("shortid");
 const path = require("path");
-const {createCourse} = require("../controller/course");
-const {requireSignIn} = require("../controller/auth");
+const {createCourse} = require("../controller/course.controller");
+const {requireSignIn} = require("../controller/auth.controller");
 const router = express.Router();
 
 const storage = multer.diskStorage({
