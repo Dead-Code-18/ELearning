@@ -1,28 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {Nav, Form, Button, FormControl} from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+import { connect } from "react-redux";
+import SearchBar from "./SearchBar"
 
 const Header = () => {
   return (
-    <div className="mt-2 mb-3">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">E-Learning</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#features">My Courses</Nav.Link>
-          </Nav>
-          <Nav className="ml-auto">
-            <Nav.Link href="#deets">Profile</Nav.Link>
-            <Nav.Link href="/auth/signup">Signup</Nav.Link>
-            <Nav.Link href="/auth/login">Login</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+    <header className="masthead text-white text-center">
+      <div className="overlay"></div>
+      <div className="container">
+        <div className="row">
+          <div className="col-xl-9 mx-auto">
+            <h1 className="mb-5">
+              Learn From Us. Search and get your desired courses!!
+            </h1>
+          </div>
+          <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <SearchBar/>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };
 export default Header;
