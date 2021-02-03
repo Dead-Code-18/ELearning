@@ -67,11 +67,11 @@ function Login(props) {
                 {props.errors.passwordincorrect}
               </span>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               {" "}
               <input
                 type="submit"
-                class="btn btn-primary text-white py-2 px-4 btn-block"
+                className="btn btn-primary text-white py-2 px-4 btn-block"
                 value="LOGIN"
               />{" "}
             </div>

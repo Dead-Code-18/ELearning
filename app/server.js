@@ -6,6 +6,7 @@ const path = require("path");
 const authRoutes = require("./src/routes/auth.route");
 const categoryRoutes = require("./src/routes/category");
 const courseRoutes = require("./src/routes/course");
+const profieRoutes = require("./src/routes/profile.route");
 const bodyparser = require("body-parser");
 
 
@@ -51,6 +52,7 @@ app.use("/index",(req,res) => {
 app.use("/auth", authRoutes);
 app.use("/category",categoryRoutes);
 app.use("/course",courseRoutes);
+app.use("/profile",profieRoutes);
 
 
 

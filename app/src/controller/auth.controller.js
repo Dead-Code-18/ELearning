@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const {
   validateLoginInput,
   validateRegisterInput,
-  isRequestValidated,
 } = require("../validators/auth.validator");
 const keys = require("../config/keys");
 
@@ -104,7 +103,7 @@ exports.requireSignIn = (req, res, next) => {
     res.status(400).json({ message: "Access denied. Login to procceed" });
   } else {
     const token = req.headers.authorization.split(" ")[1];
-    const user = jwt.verify(token, "secretKey");
+    const user = jwt.verify(token, keys.secretOrKey);
     req.user = user;
     next();
   }

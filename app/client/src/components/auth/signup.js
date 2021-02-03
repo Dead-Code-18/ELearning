@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/auth.action";
 import classnames from "classnames";

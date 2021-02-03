@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/auth.action";
 import PrivateRoute from "./components/private-routes/privateroute";
-import Dashboard from "./components/Deshboard/deshboard";
+import Profile from "./components/layout/profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Check for token to keep user logged in
@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/auth/signup" component={Signup} />
           <Route exact path="/auth/login" component={Login} />
           <Switch>
-            <PrivateRoute exact path="/deshboard" component={Dashboard} />
+            <PrivateRoute exact path="/profile/details" component={Profile} />
           </Switch>
         </div>
       </Router>

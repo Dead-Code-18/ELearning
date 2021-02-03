@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_ROLE } from "./types";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
@@ -72,4 +72,23 @@ export const logoutUser = () => (dispatch) => {
   setAuthToken(false);
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+};
+
+export const getUserRole = (userID) => (dispatch) => {
+  axios
+    .get("http://localhost:3000/profile/role", {
+      params: {
+        id: userID,
+      },
+    })
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: GET_ROLE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
