@@ -1,0 +1,151 @@
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+
+
+.padding {
+    padding: 3rem !important
+}
+
+.free-quote {
+    background: #eb9007;
+    padding: 30px 50px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px
+}
+
+.heading {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.free-quote .form-control {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: none;
+    color: #fff
+}
+
+.form-control {
+    height: 43px;
+    border-radius: 0
+}
+
+.free-quote .form-control:focus {
+    border: 2px solid #fff
+}
+
+.btn-primary {
+    color: #212529;
+    background-color: #FB8C00;
+    border-color: #f89d13
+}
+
+.btn.btn-primary {
+    border: 2px solid transparent
+}
+
+.btn {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    border-radius: 0
+}
+
+.btn.btn-primary:hover {
+    border: 2px solid #FB8C00;
+    background: none !important;
+    color: #fff !important
+}
+
+Nav .btn{
+    letter-spacing: 0px;
+    border: none;
+    text-transform: none;
+    color: rgba(255,255,255,.5);
+}
+
+Nav .btn:hover{
+    border: none #FB8C00;
+    background: none !important;
+    color: none !important;
+}
+
+header{
+    background: url('./UI/bg-masthead.jpg')no-repeat center center;
+    background-size: cover;
+}
+
+@media (min-width:768px) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.text-white {
+  color: #fff!important;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
