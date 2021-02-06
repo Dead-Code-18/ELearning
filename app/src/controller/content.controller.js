@@ -14,7 +14,7 @@ conn.once('open', () => {
 
 exports.insertFileName = (req, res) => {
   Course.update(
-    {name: "math"},
+    {courseID: req.body.courseID},
     {$push: {"contentID": req.file.filename}}
     ).exec(async (error, user) => {
     if (error) return res.status(400).json({ message: error });
