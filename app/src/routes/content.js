@@ -34,11 +34,11 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
-router.post('/upload', upload.single('file'), insertFileName);
 router.get('/files', getAllFiles);
+router.post('/:courseName/files', upload.single('file'), insertFileName);
 router.get('/files/:filename', getSingleFile);
-router.get('/read/:filename', readFile);
-router.delete('/files/:id', deleteFile);
+router.get('/files/read/:filename', readFile);
+router.delete('/files/:filename', deleteFile);
 
 
 module.exports = router;

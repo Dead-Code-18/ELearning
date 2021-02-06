@@ -6,7 +6,7 @@ const path = require("path");
 const authRoutes = require("./src/routes/auth.route");
 const courseRoutes = require("./src/routes/course");
 const profieRoutes = require("./src/routes/profile.route");
-const contents = require('./src/routes/content.js')
+const contentRoutes = require('./src/routes/content.js')
 const bodyparser = require("body-parser");
 
 
@@ -42,17 +42,14 @@ require("./src/config/passport")(passport);
 
 //============== routing code =======================
 
-app.listen(3000, function () {
-    console.log("server running at port 3000");
+app.listen(7000, function () {
+    console.log("server running at port 7000");
 });
 
 app.use("/index",(req,res) => {
     res.status(200).json({ message: "this is index page" });
 });
+
 app.use("/auth", authRoutes);
-app.use("/course",courseRoutes);
+app.use("/course", contentRoutes, courseRoutes);
 app.use("/profile",profieRoutes);
-app.use("/", contents);
-
-
-

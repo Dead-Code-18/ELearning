@@ -14,16 +14,16 @@ conn.once('open', () => {
 
 exports.insertFileName = (req, res) => {
   Course.update(
-    {_id: req.body.courseID},
+    {name: req.params.courseName},
     {$push: {"contentID": req.file.filename}}
-    ).exec(async (error, user) => {
+    ).exec(async (error, course) => {
     if (error) return res.status(400).json({ message: error });
-    if (user) {
-      return res.json({user: user});
+    if (course) {
+      return res.json({course: course});
     } else {
-      return res.status(200).json({ message: "no user" });
+      return res.status(200).json({ message: "no course" });
     }
-  });  
+  });
 };
 
 exports.readFile = (req, res) => {
@@ -42,14 +42,15 @@ exports.readFile = (req, res) => {
 };
 
 exports.deleteFile = (req, res) => {
-  gfs.remove({ filename: req.params.id, root: 'uploads' }, (err, gridStore) => {
+  gfs.remove({ filename: req.params.filename, root: 'uploads' }, (err, gridStore) => {
     if (err) {
       return res.status(404).json({ err: err });
     }
 
-    res.redirect('/files');
+    res.redirect('/course/files');
   });
 };
+
 
 exports.getAllFiles = (req, res) => {
   gfs.files.find().toArray((err, files) => {
