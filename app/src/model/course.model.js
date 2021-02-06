@@ -37,29 +37,9 @@ const courseSchema = new mongoose.Schema(
       trim: true,
       max: 500,
     },
-    contentID: {
+    contentID: [{
       type: String,
-    },
-    coursePictureUrl: {
-      type: String,
-    },
-    reviews: [
-      {
-        user: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-        score: Number,
-        comment: String,
-      },
-    ],
-    updatedAt: Date,
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
-      default: null,
-      required: true,
-    },
+    }]
   },
   {
     timestamps: true,

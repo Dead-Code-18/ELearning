@@ -7,15 +7,8 @@ exports.createCourse = (req, res) => {
         name,price,description,requirements,category
     } = req.body;
 
-    let coursePicture = [];
-    if(req.files.length > 0){
-        coursePicture = req.files.map(file =>{
-            return {img: file.filename}
-        });
-    }
-
     const course = new Course({
-        name: name,
+        name,
         price,
         description,
         requirements,
