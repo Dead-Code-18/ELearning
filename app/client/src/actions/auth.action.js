@@ -31,8 +31,6 @@ export const loginUser = (userData, history) => (dispatch) => {
       // Save to localStorage
       // Set token to localStorage
       const { token } = res.data;
-      console.log(token);
-
       localStorage.setItem("jwtToken", token);
       // Set token to Auth header
       setAuthToken(token);
@@ -45,7 +43,7 @@ export const loginUser = (userData, history) => (dispatch) => {
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.data,
       })
     );
 };
@@ -82,7 +80,6 @@ export const getUserRole = (userID) => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log(res);
       dispatch({
         type: GET_ROLE,
         payload: res.data,

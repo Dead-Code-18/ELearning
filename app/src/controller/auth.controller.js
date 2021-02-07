@@ -6,7 +6,7 @@ const {
   validateRegisterInput,
 } = require("../validators/auth.validator");
 const keys = require("../config/keys");
-
+const passport = require("passport");
 
 
 exports.signup = (req, res) => {

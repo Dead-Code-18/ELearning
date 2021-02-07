@@ -149,3 +149,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
+.customLink{
+    color: rgba(255,255,255,.5);
+}

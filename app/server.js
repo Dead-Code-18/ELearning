@@ -29,7 +29,8 @@ app.use(cors());
 mongoose.connect("mongodb://localhost/e-learning", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false 
 }).then(() => {
     console.log("Database Connected");
 });

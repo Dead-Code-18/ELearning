@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { getProfile } from "../../actions/profile.action";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
@@ -40,7 +39,6 @@ const Profile = (props) => {
 
   if (profile === null) {
     promise.then((user) => {
-      console.log(user.data);
       setProfile(user.data);
       setUsername(user.data.username);
       setEducation(user.data.education);
@@ -145,42 +143,80 @@ const Profile = (props) => {
               </form>
             </div>
           </div>
+          <InstructorInfo data={props} />
         </div>
       </div>
     );
   }
 };
 
-const instructorInfo = () => {
-  return (
-    <div className="col-md-4">
-      <div className="p-3 py-5">
-        <div className="d-flex justify-content-between align-items-center experience">
-          <span>Edit Experience</span>
-        </div>
-        <div className="col-md-12">
-          <label htmlFor="experience" className="labels">
-            Experience
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="experience"
-            value=""
-          />
-        </div>
-        <div className="col-md-12">
-          <label className="labels">Additional Details</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="additional details"
-            value=""
-          />
+const InstructorInfo = (props) => {
+  console.log(props);
+
+  const [experience, setExperience] = useState("");
+  const [additionalDetails, setAdditionalDetails] = useState("");
+
+  const onSubmit = (e) => {
+    const data = {
+      id: props.data.auth.user.id,
+      experience: experience,
+      additionalDetails: additionalDetails,
+    };
+    e.preventDefault();
+  };
+
+  if (props.data.auth.role === "teacher") {
+    return (
+      <div className="col-md-4">
+        <div className="p-3 py-5">
+          <div className="d-flex justify-content-between align-items-center experience">
+            <span>Edit Experience</span>
+          </div>
+          <form noValidate onSubmit={(e) => onSubmit(e)}>
+            <div className="col-md-12">
+              <label htmlFor="experience" className="labels">
+                Experience
+              </label>
+              <input
+                type="text"
+                id="experience"
+                className="form-control"
+                placeholder="experience"
+                value={experience}
+                onChange={(e) => {
+                  setExperience(e.target.value);
+                }}
+              />
+            </div>
+            <div className="col-md-12">
+              <label htmlFor="additionalDetails" className="labels">
+                Additional Details
+              </label>
+              <input
+                type="text"
+                id="additinalDetails"
+                className="form-control"
+                placeholder="additional details"
+                value={additionalDetails}
+                onChange={(e) => {
+                  setAdditionalDetails(e.target.value);
+                }}
+              />
+            </div>
+            <div className="form-group mt-5 text-center">
+              <input
+                type="submit"
+                className="btn btn-primary text-white py-2 px-4 btn-block"
+                value="submit"
+              />
+            </div>
+          </form>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };
 
 const mapStateToProps = (state) => ({
@@ -188,12 +224,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getProfile: (userID) => {
-      dispatch(getProfile(userID));
-    },
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+
+export default connect(mapStateToProps)(Profile);

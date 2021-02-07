@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/auth.action";
 import classnames from "classnames";
@@ -10,6 +10,11 @@ function Signup(props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    if(props.auth.isAuthenticated){
+      props.history.push("/");
+    }
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault();

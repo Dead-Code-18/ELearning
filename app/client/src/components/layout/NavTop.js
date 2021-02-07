@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Nav, Button } from "react-bootstrap";
+import { Route, Redirect } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import { logoutUser, getUserRole } from "../../actions/auth.action";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,15 +30,37 @@ const renderLeftNavitems = (props) => {
       if (props.auth.role === "student") {
         return (
           <>
-            <Nav.Link href="#features">My Learning</Nav.Link>
-            <Nav.Link href="#features">Become an instructor</Nav.Link>
+            <NavLink
+              className="navbar-dark navbar-nav nav-link customLink"
+              to="#"
+            >
+              My Courses
+            </NavLink>
+            <NavLink
+              className="navbar-dark navbar-nav nav-link customLink"
+              to="/profile/instructor"
+            >
+              Become an instructor
+            </NavLink>
           </>
         );
       }
       return (
         <>
-          <Nav.Link href="#features">My Courses</Nav.Link>
-          <Nav.Link href="#features">Upload Courses</Nav.Link>
+          <NavLink
+            style={{ color: "rgba(255,255,255,.5)" }}
+            className="navbar-dark navbar-nav nav-link"
+            to="#"
+          >
+            My Courses
+          </NavLink>
+          <NavLink
+            style={{ color: "rgba(255,255,255,.5)" }}
+            className="navbar-dark navbar-nav nav-link"
+            to="#"
+          >
+            Upload Courses
+          </NavLink>
         </>
       );
     }
@@ -47,7 +71,12 @@ const randerRightNavItems = (props) => {
   if (props.auth.isAuthenticated === true) {
     return (
       <>
-        <Nav.Link href="/profile/details">Profile</Nav.Link>
+        <NavLink
+          className="navbar-dark navbar-nav nav-link"
+          to="/profile/details"
+        >
+          Profile
+        </NavLink>
         <Button variant="outline-secondary" onClick={() => props.logout()}>
           Logout
         </Button>
@@ -57,8 +86,12 @@ const randerRightNavItems = (props) => {
 
   return (
     <>
-      <Nav.Link href="/auth/signup">Signup</Nav.Link>
-      <Nav.Link href="/auth/login">Login</Nav.Link>
+      <NavLink className="navbar-dark navbar-nav nav-link" to="/auth/signup">
+        Signup
+      </NavLink>
+      <NavLink className="navbar-dark navbar-nav nav-link" to="/auth/login">
+        Login
+      </NavLink>
     </>
   );
 };

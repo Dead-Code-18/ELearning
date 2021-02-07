@@ -7,9 +7,7 @@ const {signup,signin, requireSignIn} = require("../controller/auth.controller");
 //router.post("/signin",validateSignInRequest,isRequestValidated, signin);
 router.post("/login", signin);
 router.post("/signup", signup);
-router.get("/profile",requireSignIn, (req,res) =>{
-    res.status(200).json({ message: "profile page" });
-});
+
 
 router.get("/login", function(req, res){    
     res.status(200).json({ message: "signin page" });
