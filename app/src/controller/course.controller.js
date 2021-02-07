@@ -1,5 +1,6 @@
 const Course = require("../model/course.model");
 
+
 exports.createCourse = (req, res) => {
 
     const{
@@ -19,13 +20,13 @@ exports.createCourse = (req, res) => {
         }
 
         if (data) {
-           return res.status(201).json({course});
+            return res.status(201).json(course);    
         }
-    });
+    }); 
 };
 
 exports.getCourse = (req, res) => {
-    Course.find({name : req.params.courseName}).exec(async (error, course) => {
+    Course.find({_id : req.params._id}).exec(async (error, course) => {
         if (error) return res.status(400).json({ message: error });
         if (course) {
             return res.json(course);
@@ -47,10 +48,11 @@ exports.getAllCourse = (req, res) => {
 };
 
 exports.updateCourse = (req, res) => {
-  const {price, description, requirements} = req.body;
+  const {name, price, description, requirements} = req.body;
   Course.findOneAndUpdate(
-    { name: req.params.courseName },
+    { _id: req.params._id },
     {
+        name : name,
         price : price,
         description : description,
         requirements : requirements

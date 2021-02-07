@@ -42,8 +42,8 @@ require("./src/config/passport")(passport);
 
 //============== routing code =======================
 
-app.listen(7000, function () {
-    console.log("server running at port 7000");
+app.listen(4000, function () {
+    console.log("server running at port 4000");
 });
 
 app.use("/index",(req,res) => {

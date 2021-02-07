@@ -14,7 +14,7 @@ conn.once('open', () => {
 
 exports.insertFileName = (req, res) => {
   Course.update(
-    {name: req.params.courseName},
+    {_id: req.params.courseID},
     {$push: {"contentID": req.file.filename}}
     ).exec(async (error, course) => {
     if (error) return res.status(400).json({ message: error });
@@ -72,4 +72,17 @@ exports.getSingleFile = (req, res) => {
     }
     return res.json(file);
   });
+};
+
+exports.getContent = (req, res) => {
+  var courseContents;
+  Course.find({_id : req.params.courseID}).exec(async (error, content) => {
+    if (error) return res.status(400).json({ message: error });
+    if (content) {
+      courseContents = content[0];
+      return res.json(courseContents.contentID);
+    } else {
+        return res.status(200).json({ message: "no content" });
+    }
+  });  
 };
