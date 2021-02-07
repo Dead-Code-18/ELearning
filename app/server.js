@@ -4,13 +4,10 @@ const passport = require("passport");
 const env = require("dotenv");
 const path = require("path");
 const authRoutes = require("./src/routes/auth.route");
-const courseRoutes = require("./src/routes/course");
+const courseRoutes = require("./src/routes/course.route");
 const profieRoutes = require("./src/routes/profile.route");
-const contentRoutes = require('./src/routes/content.js')
+const contentRoutes = require('./src/routes/content.route')
 const bodyparser = require("body-parser");
-
-
-console.log(path.dirname(__dirname));
 
 
 const app = express();
@@ -43,8 +40,8 @@ require("./src/config/passport")(passport);
 
 //============== routing code =======================
 
-app.listen(7000, function () {
-    console.log("server running at port 7000");
+app.listen(3000, function () {
+    console.log("server running at port 3000");
 });
 
 app.use("/index",(req,res) => {

@@ -8,6 +8,7 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const { insertFileName, readFile, deleteFile, getAllFiles, getSingleFile} = require("../controller/content.controller");
+const { requireSignIn } = require("../controller/auth.controller");
 
 const router = express.Router();
 
@@ -35,10 +36,10 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 router.get('/files', getAllFiles);
-router.post('/:courseName/files', upload.single('file'), insertFileName);
+router.post('/:courseName/files',requireSignIn, upload.single('file'), insertFileName);
 router.get('/files/:filename', getSingleFile);
 router.get('/files/read/:filename', readFile);
-router.delete('/files/:filename', deleteFile);
+router.delete('/files/:filename',requireSignIn, deleteFile);
 
 
 module.exports = router;

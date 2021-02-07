@@ -22,3 +22,32 @@ NavLink a{
 .customLink{
     color: rgba(255,255,255,.5);
 }
+
+body{
+    background: rgb(180, 179, 178);
+    color: #222;
+}
+
+.courselist{
+    width: 90vw;
+    margin: 5rem;
+    display: grid;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 768px){
+    .courselist{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+.course{
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+}
+
+.course h1{
+    margin: 0.5rem;
+
+}

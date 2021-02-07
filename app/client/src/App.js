@@ -14,6 +14,8 @@ import PrivateRoute from "./components/private-routes/privateroute";
 import Profile from "./components/layout/profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InstructorForm from './components/layout/InstructorForm';
+import CourseCreate from "./components/layout/CourseCreate";
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -45,7 +47,16 @@ function App() {
           <Route exact path="/auth/login" component={Login} />
           <Switch>
             <PrivateRoute exact path="/profile/details" component={Profile} />
-            <PrivateRoute exact path="/profile/instructor" component={InstructorForm} />
+            <PrivateRoute
+              exact
+              path="/profile/instructor"
+              component={InstructorForm}
+            />
+            <PrivateRoute
+              exact
+              path="/course/create"
+              component={CourseCreate}
+            />
           </Switch>
         </div>
       </Router>

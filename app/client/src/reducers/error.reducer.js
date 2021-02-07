@@ -4,8 +4,14 @@ const initialState = {};
 export default function fun1(state = initialState, action) {
   switch (action.type) {
     case GET_ERRORS:
-      console.log(action.payload);
+      if(action.payload === undefined){
+        return {
+          ...state
+        }
+      }else{
       return action.payload;
+      }
+    
     default:
       return state;
   }

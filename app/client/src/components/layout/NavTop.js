@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Nav, Button } from "react-bootstrap";
-import { Route, Redirect } from "react-router-dom";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import { logoutUser, getUserRole } from "../../actions/auth.action";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,7 +23,8 @@ const NavTop = (props) => {
 
 const renderLeftNavitems = (props) => {
   if (props.auth.isAuthenticated === true) {
-    if (props.auth.role === null) {
+    if (props.auth.role === null || props.auth.role === undefined) {
+      console.log("calling getRole");
       props.getRole(props.auth.user.id);
     } else {
       if (props.auth.role === "student") {
@@ -57,7 +57,7 @@ const renderLeftNavitems = (props) => {
           <NavLink
             style={{ color: "rgba(255,255,255,.5)" }}
             className="navbar-dark navbar-nav nav-link"
-            to="#"
+            to="/course/create"
           >
             Upload Courses
           </NavLink>

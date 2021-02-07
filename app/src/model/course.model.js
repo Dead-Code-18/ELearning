@@ -7,14 +7,13 @@ const courseSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
-    instructors: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        default: null,
-        required: true,
-      },
-    ],
+    instructor: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+      required: true,
+    },
+
     price: {
       type: Number,
       required: true,
@@ -37,9 +36,11 @@ const courseSchema = new mongoose.Schema(
       trim: true,
       max: 500,
     },
-    contentID: [{
-      type: String,
-    }]
+    contentID: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,

@@ -3,7 +3,7 @@ const Course = require("../model/course.model");
 exports.createCourse = (req, res) => {
 
     const{
-        name,price,description,requirements
+        name,price,description,requirements,instructor
     } = req.body;
 
     const course = new Course({
@@ -11,6 +11,7 @@ exports.createCourse = (req, res) => {
         price,
         description,
         requirements,
+        instructor
     });
 
     course.save((error, data) => {

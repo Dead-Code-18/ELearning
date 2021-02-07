@@ -3,8 +3,10 @@ const {createCourse, getCourse, getAllCourse, updateCourse} = require("../contro
 const {requireSignIn} = require("../controller/auth.controller");
 const router = express.Router();
 
-router.get("/", getAllCourse);
-router.post("/", createCourse);
+router.get("/",requireSignIn, getAllCourse);
+router.post("/create",requireSignIn, createCourse);
 router.get("/:courseName", getCourse);
 router.post("/:courseName", updateCourse);
+
+
 module.exports = router;

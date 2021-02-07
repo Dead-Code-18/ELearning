@@ -27,7 +27,7 @@ const Profile = (props) => {
       state: state,
     };
     console.log(userData);
-    if (userData != profile) {
+    if (userData !== profile) {
       axios
         .post("http://localhost:3000/profile/update", userData)
         .then((res) => {
