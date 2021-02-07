@@ -70,7 +70,7 @@ exports.getSingleFile = (req, res) => {
         err: 'No file exists'
       });
     }
-    return res.json(file);
+    return res.json(file.aliases);
   });
 };
 
@@ -85,4 +85,15 @@ exports.getContent = (req, res) => {
         return res.status(200).json({ message: "no content" });
     }
   });  
+};
+
+exports.getFileName = (req, res) => {
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+    if (!file || file.length === 0) {
+      return res.status(404).json({
+        err: 'No file exists'
+      });
+    }
+    return res.json(file.aliases);
+  });
 };
