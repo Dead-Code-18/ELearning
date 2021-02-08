@@ -6,7 +6,7 @@ const path = require("path");
 const authRoutes = require("./src/routes/auth.route");
 const courseRoutes = require("./src/routes/course.route");
 const profieRoutes = require("./src/routes/profile.route");
-const contentRoutes = require('./src/routes/content.route')
+const contentRoutes = require('./src/routes/content.route');
 const bodyparser = require("body-parser");
 
 

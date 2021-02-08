@@ -33,12 +33,12 @@ function Signup(props){
   return (
 
 
-    <div class="padding container-fluid d-flex justify-content-center">
-      <div class="col-md-4">
-        <div class="free-quote bg-dark h-100">
-          <h2 class="my-4 heading text-center">Register to E-learning</h2>
+    <div className="padding container-fluid d-flex justify-content-center">
+      <div className="col-md-4">
+        <div className="free-quote bg-dark h-100">
+          <h2 className="my-4 heading text-center">Register to E-learning</h2>
           <form noValidate onSubmit={(e) => onSubmit(e)}>
-            <div class="form-group mb-4">
+            <div className="form-group mb-4">
               {" "}
               <label htmlFor="username">Username</label>{" "}
               <input
@@ -47,7 +47,7 @@ function Signup(props){
                 error={props.errors ? props.errors.username : ""}
                 id="username"
                 type="username"
-                class="form-control btn-block"
+                className="form-control btn-block"
                 className={classnames("form-control btn-block", {
                   invalid: props.errors
                     ? props.errors.username
@@ -59,7 +59,7 @@ function Signup(props){
                 {props.errors.username}
               </span>
             </div>
-            <div class="form-group mb-4">
+            <div className="form-group mb-4">
               {" "}
               <label htmlFor="email">Email</label>{" "}
               <input
@@ -68,7 +68,7 @@ function Signup(props){
                 error={props.errors ? props.errors.email : ""}
                 id="email"
                 type="email"
-                class="form-control btn-block"
+                className="form-control btn-block"
                 className={classnames("form-control btn-block", {
                   invalid: props.errors
                     ? props.errors.email || props.errors.emailnotfound
@@ -81,7 +81,7 @@ function Signup(props){
                 {props.errors.emailnotfound}
               </span>
             </div>
-            <div class="form-group mb-4">
+            <div className="form-group mb-4">
               {" "}
               <label htmlFor="password">Password</label>{" "}
               <input
@@ -90,7 +90,7 @@ function Signup(props){
                 error={props.errors ? props.errors.password : ""}
                 id="password"
                 type="password"
-                class="form-control btn-block"
+                className="form-control btn-block"
                 className={classnames("form-control btn-block", {
                   invalid: props.errors
                     ? props.errors.password || props.errors.passwordincorrect
@@ -107,7 +107,7 @@ function Signup(props){
               {" "}
               <input
                 type="submit"
-                class="btn btn-primary text-white py-2 px-4 btn-block"
+                className="btn btn-primary text-white py-2 px-4 btn-block"
                 value="SIGNUP"
               />{" "}
             </div>

@@ -10,6 +10,12 @@ const mongoose = require("mongoose");
        index: true,
        lowercase: true,
      },
+     ownedCourses: [{
+       type: mongoose.Schema.Types.ObjectId,
+       ref: "Course",
+       default: null,
+       required: true,
+     }],
      email: {
        type: String,
        required: true,

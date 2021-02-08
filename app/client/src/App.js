@@ -15,6 +15,10 @@ import Profile from "./components/layout/profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InstructorForm from './components/layout/InstructorForm';
 import CourseCreate from "./components/layout/CourseCreate";
+import CourseList from "./components/layout/courseList";
+import CourseDetails from './components/layout/CourseDetails';
+import ContentView from './components/layout/ContentView';
+
 
 
 // Check for token to keep user logged in
@@ -47,6 +51,7 @@ function App() {
           <Route exact path="/auth/login" component={Login} />
           <Switch>
             <PrivateRoute exact path="/profile/details" component={Profile} />
+
             <PrivateRoute
               exact
               path="/profile/instructor"
@@ -56,6 +61,18 @@ function App() {
               exact
               path="/course/create"
               component={CourseCreate}
+            />
+
+            <PrivateRoute exact path="/course/list" component={CourseList} />
+            <PrivateRoute
+              exact
+              path="/course/details/:courseID"
+              component={CourseDetails}
+            />
+            <PrivateRoute
+              exact
+              path="/course/content/view/:contentID"
+              component={ContentView}
             />
           </Switch>
         </div>

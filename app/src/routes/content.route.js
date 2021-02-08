@@ -7,7 +7,15 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-const { insertFileName, readFile, deleteFile, getAllFiles, getSingleFile} = require("../controller/content.controller");
+const {
+  insertFileName,
+  readFile,
+  deleteFile,
+  getAllFiles,
+  getSingleFile,
+  getContent,
+  getContentsByCourseID,
+} = require("../controller/content.controller");
 const { requireSignIn } = require("../controller/auth.controller");
 
 const router = express.Router();
@@ -23,10 +31,11 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-        const filename = req.body.userID + req.body.authorID + file.originalname;
+        const filename = req.query.userID + req.query.courseID + file.originalname;
         const fileInfo = {
           filename: filename,
-          bucketName: 'uploads'
+          aliases: file.originalname,
+          bucketName: "uploads",
         };
         resolve(fileInfo);
       });
@@ -35,10 +44,13 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
-router.get('/files', getAllFiles);
-router.post('/:courseName/files',requireSignIn, upload.single('file'), insertFileName);
+
+router.get("/files", getAllFiles);
+router.get("/:courseID/files", getContent);
+router.post('/content/upload', upload.single('file'), insertFileName);
 router.get('/files/:filename', getSingleFile);
-router.get('/files/read/:filename', readFile);
+router.get("/content/getAllContent", getContentsByCourseID);
+router.get("/content/read", readFile);
 router.delete('/files/:filename',requireSignIn, deleteFile);
 
 

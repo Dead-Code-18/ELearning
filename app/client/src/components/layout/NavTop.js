@@ -32,7 +32,7 @@ const renderLeftNavitems = (props) => {
           <>
             <NavLink
               className="navbar-dark navbar-nav nav-link customLink"
-              to="#"
+              to="/course/list"
             >
               My Courses
             </NavLink>
@@ -50,7 +50,7 @@ const renderLeftNavitems = (props) => {
           <NavLink
             style={{ color: "rgba(255,255,255,.5)" }}
             className="navbar-dark navbar-nav nav-link"
-            to="#"
+            to="/course/list"
           >
             My Courses
           </NavLink>

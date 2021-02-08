@@ -21,6 +21,8 @@ function CourseCreate(props) {
       requirements: requirement
     };
 
+
+
     axios
       .post("http://localhost:3000/course/create", newCourse)
       .then((res) => {

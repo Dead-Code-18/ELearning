@@ -24,8 +24,7 @@ function Login(props) {
           <h2 class="my-4 heading text-center">Login to E-learning</h2>
           <form noValidate onSubmit={(e) => onSubmit(e)}>
             <div class="form-group mb-4">
-              {" "}
-              <label htmlFor="email">Email</label>{" "}
+              <label htmlFor="email">Email</label>
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}

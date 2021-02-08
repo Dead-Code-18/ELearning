@@ -49,12 +49,11 @@ export const loginUser = (userData, history) => (dispatch) => {
 };
 
 // Set logged in user
-export const setCurrentUser = (decoded) =>{
+export const setCurrentUser = (decoded) => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded,
   };
-
 };
 // User loading
 export const setUserLoading = () => {
@@ -65,7 +64,6 @@ export const setUserLoading = () => {
 
 // Log user out
 export const logoutUser = () => (dispatch) => {
-  
   // Remove token from local storage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests
@@ -83,8 +81,11 @@ export const getUserRole = (userID) => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log(userID);
-      dispatch(setUserRole(res));
+      if (res.data !== "teacher" && res.data !== "student") {
+        dispatch(logoutUser());
+      } else {
+        dispatch(setUserRole(res));
+      }
     })
     .catch((err) => {
       dispatch({
@@ -95,8 +96,8 @@ export const getUserRole = (userID) => (dispatch) => {
 };
 
 export const setUserRole = (data) => {
-   return {
+  return {
     type: GET_ROLE,
     payload: data.data,
   };
-}
+};

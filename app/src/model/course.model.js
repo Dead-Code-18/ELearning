@@ -23,6 +23,8 @@ const courseSchema = new mongoose.Schema(
     },
     enrolled: {
       type: Number,
+      required: true,
+      default:0,
     },
     description: {
       type: String,
@@ -41,6 +43,7 @@ const courseSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    required: true,
   },
   {
     timestamps: true,
