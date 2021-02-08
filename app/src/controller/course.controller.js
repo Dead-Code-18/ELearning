@@ -1,5 +1,5 @@
 const Course = require("../model/course.model");
-
+const User = require("../model/user.model");
 
 exports.createCourse = (req, res) => {
 
@@ -72,3 +72,4 @@ exports.updateCourse = (req, res) => {
     }
   });
 };
+

@@ -37,6 +37,10 @@ const mongoose = require("mongoose");
        type: String,
        default: null,
      },
+     courseIDs: [{
+      type: String,
+      default: null,
+     }]
    },
    { timestamps: true }
  );

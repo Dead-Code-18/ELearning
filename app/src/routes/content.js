@@ -7,7 +7,8 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-const { insertFileName, readFile, deleteFile, getAllFiles, getSingleFile, getContent, getFileName} = require("../controller/content.controller");
+const Course = require("../model/course.model");
+const { insertFileName, readFile, deleteFile, getAllFiles, getSingleFile, getContent, getFileName, searchCourse, buyCourse} = require("../controller/content.controller");
 
 const router = express.Router();
 
@@ -43,5 +44,8 @@ router.get('/file/:filename', getFileName);
 router.get('/files/read/:filename', readFile);
 router.delete('/files/:filename', deleteFile);
 
+//these are here as they don't work in couse.js for unknown reasons
+router.get('/search', searchCourse);
+router.post("/:courseID/buy", buyCourse);
 
 module.exports = router;
