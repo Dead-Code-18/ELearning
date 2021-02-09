@@ -6,7 +6,8 @@ const path = require("path");
 const authRoutes = require("./src/routes/auth.route");
 const courseRoutes = require("./src/routes/course");
 const profieRoutes = require("./src/routes/profile.route");
-const contentRoutes = require('./src/routes/content.js')
+const contentRoutes = require('./src/routes/content.js');
+const categoryRoutes = require("./src/routes/category.js");
 const bodyparser = require("body-parser");
 
 
@@ -50,6 +51,7 @@ app.use("/index",(req,res) => {
     res.status(200).json({ message: "this is index page" });
 });
 
+app.use("/category", categoryRoutes);
 app.use("/auth", authRoutes);
 app.use("/course", contentRoutes, courseRoutes);
 app.use("/profile",profieRoutes);

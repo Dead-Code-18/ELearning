@@ -37,6 +37,10 @@ const courseSchema = new mongoose.Schema(
       trim: true,
       max: 500,
     },
+    category: {
+      type: String,
+      required: true,
+    },
     contentID: [{
       type: String,
     }]

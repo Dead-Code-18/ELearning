@@ -1,9 +1,10 @@
 const Course = require("../model/course.model");
+const Category = require("../model/category.model");
 
 exports.createCourse = (req, res) => {
 
     const{
-        name,price,description,requirements
+        name,price,description,requirements, category
     } = req.body;
 
     const course = new Course({
@@ -11,6 +12,7 @@ exports.createCourse = (req, res) => {
         price,
         description,
         requirements,
+        category,
     });
 
     course.save((error, data) => {
@@ -19,7 +21,18 @@ exports.createCourse = (req, res) => {
         }
 
         if (data) {
-            return res.status(201).json(course);    
+            Category.update(
+                {name: course.category},
+                {$push: {"courseIDs": course._id}}
+                ).exec(async (error, category) => {
+                if (error) return res.status(400).json({ message: error });
+                if (category) {
+                  return res.json({category: category, course: course});
+                } else {
+                  return res.status(200).json({ message: "not a category" });
+                }
+            });
+            //return res.status(201).json(course);    
         }
     }); 
 };
