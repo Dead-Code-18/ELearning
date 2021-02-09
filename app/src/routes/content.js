@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const Course = require("../model/course.model");
 const { insertFileName, readFile, deleteFile, getAllFiles, getSingleFile, getContent, getFileName, searchCourse, buyCourse} = require("../controller/content.controller");
+const {requireSignIn, validateRole, validateUser} = require("../controller/auth.controller");
 
 const router = express.Router();
 
@@ -23,7 +24,7 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-        const filename = req.body.userID + req.body.authorID + file.originalname;
+        const filename = req.params.courseID + file.originalname;
         const fileInfo = {
           filename: filename,
           aliases: file.originalname,
@@ -43,8 +44,9 @@ router.get('/files/:filename', getSingleFile);
 router.get('/file/:filename', getFileName);
 router.get('/files/read/:filename', readFile);
 router.delete('/files/:filename', deleteFile);
-
-//these are here as they don't work in couse.js for unknown reasons
+router.get('/next/validate', validateRole);
+router.get('/next/validate/user', validateUser);
+//these are here as they don't work in course.js for unknown reasons
 router.get('/search', searchCourse);
 router.post("/:courseID/buy", buyCourse);
 

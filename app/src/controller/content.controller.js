@@ -130,3 +130,4 @@ exports.buyCourse = (req, res) => {
         }
     );
 }
+
