@@ -21,13 +21,11 @@ function CourseCreate(props) {
       requirements: requirement
     };
 
-
-
     axios
       .post("http://localhost:3000/course/create", newCourse)
       .then((res) => {
         console.log(res);
-        props.history.push("/");
+        props.history.push("/course/list");
       })
       .catch();
   };

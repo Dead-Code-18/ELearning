@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Course = (props) => {
   const { name, description, instructor, createdAt } = props.course;
+  console.log(props);
   const linkDetails = {
     pathname: `/course/details/${props.course._id}`,
-    state: { course: props.course },
+    state: { course: props.course, ownerAccess: props.ownerAccess },
   };
   return (
     <div className="col-md-4 mt-2">

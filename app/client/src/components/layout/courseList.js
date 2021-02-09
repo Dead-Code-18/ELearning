@@ -53,6 +53,11 @@ const RenderCourseList = (props, ownedCourseList, uploadedCourseList) => {
         <h4 className="text-left">Course Owned</h4>
         <hr />
         <p>You have no course available</p>
+        {props.auth.role === "teacher" ? (
+          RenderUploadedCourseList(uploadedCourseList)
+        ) : (
+          <></>
+        )}
       </div>
     );
   } else {
@@ -92,7 +97,11 @@ const setOwnedCourses = (ownedCourseList) => {
   var i;
   for (i = 0; i < ownedCourseList.length; i++) {
     courses.push(
-      <Course key={ownedCourseList[i].id} course={ownedCourseList[i]}></Course>
+      <Course
+        key={ownedCourseList[i].id}
+        course={ownedCourseList[i]}
+        ownerAccess={false}
+      ></Course>
     );
   }
   return courses;
@@ -106,6 +115,7 @@ const setUploadedCourses = (uploadedCourseList) => {
       <Course
         key={uploadedCourseList[i].id}
         course={uploadedCourseList[i]}
+        ownerAccess = {true}
       ></Course>
     );
   }

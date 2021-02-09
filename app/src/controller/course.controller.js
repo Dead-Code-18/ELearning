@@ -4,45 +4,49 @@ const Instructor = require("../model/instructor.model");
 const User = require("../model/user.model");
 
 exports.createCourse = (req, res) => {
+
   const { name, price, description, requirements, instructor } = req.body;
-  const course = new Course({
-    name,
-    price,
-    description,
-    requirements,
-    instructor,
-  });
+  var owner={};
 
-  course.save((error, data) => {
-    if (error) {
-      return res.status(400).json({ error });
-    }
-
-    if (data) {
-      Instructor.findOneAndUpdate(
-        { _id: instructor },
-        {
-          $push: { createdCourses: data._id },
-        },
-        {
-          new: true,
+  User.findById(instructor).exec(async (error, user) => {
+    if(user){
+      const course = new Course({
+        name,
+        price,
+        description,
+        requirements,
+        instructor,
+        instructorName: user.username,
+      });
+      course.save((error, data) => {
+        if (error) {
+          return res.status(400).json({ error });
         }
-      ).exec(async (error, instructor) => {
-        if (error) return res.status(400).json({ message: error });
-        if (instructor) {
-          instructor
-            .save()
-            .then((instructor) => res.json({instructor,data}))
-            .catch((err) => console.log(err));
-        } else {
-          return res.status(200).json({ message: "no instructor" });
+
+        if (data) {
+          Instructor.findOneAndUpdate(
+            { _id: instructor },
+            {
+              $push: { createdCourses: data._id },
+            },
+            {
+              new: true,
+            }
+          ).exec(async (error, instructor) => {
+            if (error) return res.status(400).json({ message: error });
+            if (instructor) {
+              instructor
+                .save()
+                .then((instructor) => res.json({ instructor, data }))
+                .catch((err) => console.log(err));
+            } else {
+              return res.status(200).json({ message: "no instructor" });
+            }
+          });
         }
       });
     }
-  });
-
-  
-
+  })
 
 };
 
@@ -119,6 +123,52 @@ exports.updateCourse = (req, res) => {
         .catch((err) => console.log(err));
     } else {
       return res.status(200).json({ message: "no course" });
+    }
+  });
+};
+
+exports.getCourseOwner = (req,res) => {
+  const {courseID} = req.query;
+  Course.findById(courseID).exec(async (error, course) => {
+    if(course){
+      return res.json(course.instructor);
+    }else{
+      return res.json({message: "course not found"})
+    }
+  });
+}
+
+exports.searchCourse = (req, res) => {
+  const {q} = req.query;
+  Course.find(
+    {
+      name: {
+        $regex: new RegExp(q),
+      },
+    },
+    (err, data) => {
+      console.log(data);
+      res.json(data);
+    }
+  ).limit(10);
+};
+
+exports.buyCourse = (req, res) => {
+  User.update(
+    {
+      username: req.body.username,
+    },
+    {
+      $push: {
+        courseIDs: req.params.courseID,
+      },
+    }
+  ).exec(async (error, user) => {
+    if (error) return res.status(400).json({ message: error });
+    if (user) {
+      return res.json({ User: user });
+    } else {
+      return res.status(200).json({ message: "no user" });
     }
   });
 };

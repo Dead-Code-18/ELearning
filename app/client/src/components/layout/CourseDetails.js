@@ -35,6 +35,8 @@ const CourseDetails = (props) => {
     });
   };
 
+  console.log(props);
+
   const setContents = (contentList) => {
     var contents = [];
     var i;
@@ -57,37 +59,10 @@ const CourseDetails = (props) => {
     return contents;
   };
 
-  return (
-    <div className="container">
-      <NavTop />
-      <div className=" align-items-center mt-5 mb-3">
-        <h4 className="text-center">{course.name}</h4>
-      </div>
-      <div className="jumbotron">
-        <div className=" align-items-center mt-5 mb-3">
-          <h4 className="text-left">Course Details</h4>
-          <hr />
-        </div>
-        <div className=" align-items-center mb-3">
-          <p className="text-left">Created at: {course.createdAt}</p>
-        </div>
-        <div className=" align-items-center mb-3">
-          <p className="text-left">Instructor: {course.instructor}</p>
-        </div>
-        <div className=" align-items-center mb-3">
-          <p className="text-left">Description: {course.description}</p>
-        </div>
-        <div className=" align-items-center mb-3">
-          <p className="text-left">Requirements: {course.requirements}</p>
-        </div>
-      </div>
-      <div className="jumbotron">
-        <div className=" align-items-center mt-5 mb-3">
-          <h4 className="text-left">Course Contents</h4>
-        </div>
-        <div className=" mb-50">{setContents(contentList)}</div>
-      </div>
-      {props.auth.role === "teacher" ? (
+
+  const setUploadForm = (props) => {
+    if(props.auth.role === "teacher" && props.location.state.ownerAccess===true){
+      return (
         <div className="padding container-fluid d-flex justify-content-center">
           <form noValidate onSubmit={(e) => onSubmit(e)}>
             <div className="form-group mb-4">
@@ -107,11 +82,46 @@ const CourseDetails = (props) => {
             </div>
           </form>
         </div>
-      ) : (
-        <></>
-      )}
+      );
+    }else{
+      <></>
+    }
+    
+  }
 
-      <hr />
+  return (
+    <div className="container">
+      <NavTop />
+      <div className=" align-items-center mt-5 mb-3">
+        <h4 className="text-center">{course.name}</h4>
+      </div>
+      <div className="jumbotron">
+        <div className=" align-items-center mt-5 mb-3">
+          <h4 className="text-left">Course Details</h4>
+          <hr />
+        </div>
+        <div className=" align-items-center mb-3">
+          <p className="text-left">Created at: {course.createdAt}</p>
+        </div>
+        <div className=" align-items-center mb-3">
+          <p className="text-left">Instructor: {course.instructorName}</p>
+        </div>
+        <div className=" align-items-center mb-3">
+          <p className="text-left">Description: {course.description}</p>
+        </div>
+        <div className=" align-items-center mb-3">
+          <p className="text-left">Requirements: {course.requirements}</p>
+        </div>
+      </div>
+      <div className="jumbotron">
+        <div className=" align-items-center mt-5 mb-3">
+          <h4 className="text-left">Course Contents</h4>
+          <hr />
+        </div>
+        <div className=" mb-50">{setContents(contentList)}</div>
+      </div>
+
+      {setUploadForm(props)}
     </div>
   );
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/auth.action";
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login(props) {
@@ -67,14 +68,16 @@ function Login(props) {
               </span>
             </div>
             <div className="form-group">
-              {" "}
               <input
                 type="submit"
                 className="btn btn-primary text-white py-2 px-4 btn-block"
                 value="LOGIN"
-              />{" "}
+              />
             </div>
           </form>
+          <Link to="/auth/signup">
+            <p className="text-center text-white">No account? Signup here</p>
+          </Link>
         </div>
       </div>
     </div>

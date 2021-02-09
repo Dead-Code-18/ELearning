@@ -49,6 +49,11 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/auth/signup" component={Signup} />
           <Route exact path="/auth/login" component={Login} />
+          <Route
+            exact
+            path="/course/details/:courseID"
+            component={CourseDetails}
+          />
           <Switch>
             <PrivateRoute exact path="/profile/details" component={Profile} />
 
@@ -64,11 +69,7 @@ function App() {
             />
 
             <PrivateRoute exact path="/course/list" component={CourseList} />
-            <PrivateRoute
-              exact
-              path="/course/details/:courseID"
-              component={CourseDetails}
-            />
+
             <PrivateRoute
               exact
               path="/course/content/view/:contentID"

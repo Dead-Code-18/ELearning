@@ -1,7 +1,10 @@
 import React from "react";
-import SearchBar from "./SearchBar"
+import SearchBar from "./SearchBar";
 
-const Header = () => {
+const Header = (props) => {
+  const handleCallBack = (res) => {
+    props.parentCallBack(res);
+  };
   return (
     <header className="masthead text-white text-center">
       <div className="overlay"></div>
@@ -13,7 +16,7 @@ const Header = () => {
             </h1>
           </div>
           <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <SearchBar/>
+            <SearchBar parentCallBack={handleCallBack} />
           </div>
         </div>
       </div>

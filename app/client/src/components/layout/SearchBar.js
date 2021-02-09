@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
+
 
   const onSubmit = (e) => {
     e.preventDefault();
-    
+    props.parentCallBack(searchText);
   };
 
   return (
@@ -32,4 +34,5 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+
+export default (SearchBar);
