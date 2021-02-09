@@ -114,7 +114,7 @@ exports.validateRole = (req, res) => {
   User.find({"_id" : req.body.id}).exec(async (error, user) => {
     if (error) return res.status(400).json({ message: error });
     if (user[0].role == "teacher") {
-      return res.json({ message: "access approved"});      
+      next();
     } else {
       return res.status(200).json({ message: "access denied" });
     }
@@ -129,7 +129,7 @@ exports.validateUser = (req, res) => {
       const courseToEnter = req.body.courseID;
       for(var course of coursesOfUser){
         if(course == courseToEnter){
-          next()
+          next();
         }
       }
     } else {
