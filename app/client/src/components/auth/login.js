@@ -10,6 +10,7 @@ function Login(props) {
   const [password, setPassword] = useState("");
 
   const onSubmit = (e) => {
+    console.log(props);
     e.preventDefault();
     const userData = {
       email: email,

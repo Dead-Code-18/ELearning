@@ -154,13 +154,13 @@ exports.searchCourse = (req, res) => {
 };
 
 exports.buyCourse = (req, res) => {
-  User.update(
+  User.findOneAndUpdate(
     {
-      username: req.body.username,
+      _id: req.query.userID,
     },
     {
       $push: {
-        courseIDs: req.params.courseID,
+        ownedCourses: req.query.courseID,
       },
     }
   ).exec(async (error, user) => {

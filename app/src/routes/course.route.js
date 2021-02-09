@@ -8,6 +8,7 @@ const {
   getCourseForInstructor,
   searchCourse,
   getCourseOwner,
+  buyCourse,
 } = require("../controller/course.controller");
 const {requireSignIn} = require("../controller/auth.controller");
 const router = express.Router();
@@ -19,5 +20,6 @@ router.get("/get", getCourse);
 router.post("/update", updateCourse);
 router.get("/search", searchCourse);
 router.get("/owner/get", getCourseOwner);
+router.get("/buy", buyCourse);
 
 module.exports = router;

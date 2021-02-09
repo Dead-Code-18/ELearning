@@ -18,6 +18,7 @@ import CourseCreate from "./components/layout/CourseCreate";
 import CourseList from "./components/layout/courseList";
 import CourseDetails from './components/layout/CourseDetails';
 import ContentView from './components/layout/ContentView';
+import CourseBuyForm from './components/layout/CourseBuyForm';
 
 
 
@@ -74,6 +75,11 @@ function App() {
               exact
               path="/course/content/view/:contentID"
               component={ContentView}
+            />
+            <PrivateRoute
+              exact
+              path="/course/buy/:courseID"
+              component={CourseBuyForm}
             />
           </Switch>
         </div>

@@ -33,6 +33,7 @@ const Landing = () => {
           key={searchedCourse[i].id}
           course={searchedCourse[i]}
           ownerAccess={false}
+          searchedCourse={true}
         ></Course>
       );
     }

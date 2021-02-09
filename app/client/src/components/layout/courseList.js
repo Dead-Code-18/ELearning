@@ -101,6 +101,7 @@ const setOwnedCourses = (ownedCourseList) => {
         key={ownedCourseList[i].id}
         course={ownedCourseList[i]}
         ownerAccess={false}
+        searchedCourse={false}
       ></Course>
     );
   }
@@ -116,6 +117,7 @@ const setUploadedCourses = (uploadedCourseList) => {
         key={uploadedCourseList[i].id}
         course={uploadedCourseList[i]}
         ownerAccess = {true}
+        searchedCourse = {false}
       ></Course>
     );
   }

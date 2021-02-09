@@ -3,8 +3,9 @@ import NavTop from "./NavTop";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import {  Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const CourseDetails = (props) => {
   const course = props.location.state.course;
@@ -30,12 +31,18 @@ const CourseDetails = (props) => {
     axios.post("http://localhost:3000/course/content/upload", formData, {
       params: {
         userID: props.auth.user.id,
-        courseID: course._id
+        courseID: course._id,
       },
     });
   };
 
-  console.log(props);
+  const courseBuyLinkData = {
+    pathname: `/course/buy/${course._id}`,
+    state: {
+      courseID: course._id,
+    },
+  };
+
 
   const setContents = (contentList) => {
     var contents = [];
@@ -59,9 +66,11 @@ const CourseDetails = (props) => {
     return contents;
   };
 
-
   const setUploadForm = (props) => {
-    if(props.auth.role === "teacher" && props.location.state.ownerAccess===true){
+    if (
+      props.auth.role === "teacher" &&
+      props.location.state.ownerAccess === true
+    ) {
       return (
         <div className="padding container-fluid d-flex justify-content-center">
           <form noValidate onSubmit={(e) => onSubmit(e)}>
@@ -83,11 +92,10 @@ const CourseDetails = (props) => {
           </form>
         </div>
       );
-    }else{
-      <></>
+    } else {
+      <></>;
     }
-    
-  }
+  };
 
   return (
     <div className="container">
@@ -112,6 +120,20 @@ const CourseDetails = (props) => {
         <div className=" align-items-center mb-3">
           <p className="text-left">Requirements: {course.requirements}</p>
         </div>
+        {props.location.state.searchedCourse === true ? (
+          <div className=" align-items-center mb-3">
+            <NavLink className="navbar-dark navbar-nav nav-link" to={courseBuyLinkData}>
+              <Button
+                className="p-0"
+                variant="outline-secondary"
+              >
+                Purchase
+              </Button>
+            </NavLink>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="jumbotron">
         <div className=" align-items-center mt-5 mb-3">
@@ -124,11 +146,7 @@ const CourseDetails = (props) => {
       {setUploadForm(props)}
     </div>
   );
-
-  
 };
-
-
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
