@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import NavTop from "./NavTop";
+import Footer from "./Footer";
 
 const CourseBuyForm = (props) => {
   const [cardNumber, setCardNumber] = useState("");
@@ -152,6 +153,7 @@ const CourseBuyForm = (props) => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

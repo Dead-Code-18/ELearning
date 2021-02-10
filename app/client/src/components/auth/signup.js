@@ -31,8 +31,6 @@ function Signup(props){
 
 
   return (
-
-
     <div className="padding container-fluid d-flex justify-content-center">
       <div className="col-md-4">
         <div className="free-quote bg-dark h-100">

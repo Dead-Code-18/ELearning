@@ -9,17 +9,25 @@ const {
   searchCourse,
   getCourseOwner,
   buyCourse,
+  getCourseIDForUser,
+  
 } = require("../controller/course.controller");
-const {requireSignIn} = require("../controller/auth.controller");
+const {
+  requireSignIn,
+  validateUser,
+  validateInstructorRole,
+  validateOwner,
+} = require("../controller/auth.controller");
 const router = express.Router();
 
-router.get("/getOwnedCourse", getCourseForUser);
-router.get("/getUploadedCourse", getCourseForInstructor);
-router.post("/create", createCourse);
-router.get("/get", getCourse);
-router.post("/update", updateCourse);
+router.get("/getOwnedCourse",requireSignIn, getCourseForUser);
+router.get("/id/get",requireSignIn, getCourseIDForUser);
+router.get("/getUploadedCourse",requireSignIn,validateInstructorRole, getCourseForInstructor);
+router.post("/create",requireSignIn,validateInstructorRole, createCourse);
+router.get("/get", getAllCourse);
+router.post("/update",requireSignIn,validateInstructorRole,validateOwner, updateCourse);
 router.get("/search", searchCourse);
 router.get("/owner/get", getCourseOwner);
-router.get("/buy", buyCourse);
+router.get("/buy",requireSignIn, buyCourse);
 
 module.exports = router;

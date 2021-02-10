@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import FileViewer from "react-file-viewer";
 import axios from "axios";
+import Footer from "./Footer";
 
 const ContentView = (props) => {
   const content = props.location.state.content;
@@ -35,6 +36,7 @@ const ContentView = (props) => {
           //onError={onError}
         />
       </div>
+      <Footer/>
     </div>
   );
 };

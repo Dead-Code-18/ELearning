@@ -86,6 +86,19 @@ exports.getCourseForUser = (req, res) => {
   });
 };
 
+exports.getCourseIDForUser = (req, res) => {
+  const id = req.query.userID;
+  let courseIDList = [];
+  User.findById(id).exec(async (error, user) => {
+    if (user) {
+      courseIDList = user.ownedCourses;
+      return res.json(courseIDList);
+    } else {
+      return res.json({ error: "user not found" });
+    }
+  });
+};
+
 exports.getCourseForInstructor = (req,res) => {
   const id = req.query.instructorID;
   let courseIDList = [];
@@ -105,7 +118,7 @@ exports.getCourseForInstructor = (req,res) => {
 exports.updateCourse = (req, res) => {
   const { price, description, requirements } = req.body;
   Course.findOneAndUpdate(
-    { name: req.params.courseName },
+    { _id: req.query.courseID },
     {
       price: price,
       description: description,

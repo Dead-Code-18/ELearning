@@ -13,6 +13,9 @@ const courseSchema = new mongoose.Schema(
       default: null,
       required: true,
     },
+    category: {
+      type: String,
+    },
     instructorName: {
       type: String,
       required: true,

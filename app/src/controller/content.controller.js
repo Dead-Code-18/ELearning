@@ -91,17 +91,6 @@ exports.getContentsByCourseID = (req, res) => {
   Course.findById(id).exec(async (error, course) => {
     if (course) {
       contentIDList = course.contentID;
-      console.log(contentIDList);
-     /* gfs.files.findOne(
-        {
-          filename:  contentIDList[0],
-        },
-        (err, data) => {
-          console.log(data);
-          return res.json(data);
-        }
-      );*/
-
       gfs.files
         .find({ filename: { $in: contentIDList } })
         .toArray(function (err, files) {

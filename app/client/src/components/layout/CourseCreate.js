@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import NavTop from "./NavTop";
+import Footer from "./Footer";
 
 function CourseCreate(props) {
   const [description, setDescription] = useState("");
@@ -106,6 +107,7 @@ function CourseCreate(props) {
           </div>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 }

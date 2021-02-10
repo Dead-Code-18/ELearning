@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { getUserRole, getProfile,updateProfile, changeRole } = require("../controller/profile.controller");
-const { requireSignIn } = require("../controller/auth.controller");
+const { requireSignIn, validateInstructorRole } = require("../controller/auth.controller");
 
 router.get("/role",requireSignIn, getUserRole);
 router.get("/details", requireSignIn, getProfile);

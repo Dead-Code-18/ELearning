@@ -25,15 +25,16 @@ function Login(props) {
         <div class="free-quote bg-dark h-100">
           <h2 class="my-4 heading text-center">Login to E-learning</h2>
           <form noValidate onSubmit={(e) => onSubmit(e)}>
-            <div class="form-group mb-4">
-              <label htmlFor="email">Email</label>
+            <div className="form-group mb-4">
+              {" "}
+              <label htmlFor="email">Email</label>{" "}
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 error={props.errors ? props.errors.email : ""}
                 id="email"
                 type="email"
-                class="form-control btn-block"
+                className="form-control btn-block"
                 className={classnames("form-control btn-block", {
                   invalid: props.errors
                     ? props.errors.email || props.errors.emailnotfound

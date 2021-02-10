@@ -4,10 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Course from "./Course";
 import NavTop from "./NavTop";
+import Footer from "./Footer";
 
 function CourseList(props) {
   const [ownedCourseList, setOwnedCourseList] = useState([]);
   const [uploadedCourseList, setUploadedCourseList] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/course/getOwnedCourse", {
@@ -19,20 +21,18 @@ function CourseList(props) {
         setOwnedCourseList(courses.data);
       });
 
-      if (props.auth.role === "teacher") {
-        axios
-          .get("http://localhost:3000/course/getUploadedCourse", {
-            params: {
-              instructorID: props.auth.user.id,
-            },
-          })
-          .then((courses) => {
-            setUploadedCourseList(courses.data);
-          });
-      }
+    axios
+      .get("http://localhost:3000/course/getUploadedCourse", {
+        params: {
+          instructorID: props.auth.user.id,
+        },
+      })
+      .then((courses) => {
+        setUploadedCourseList(courses.data);
+      });
   }, []);
 
-
+  console.log(uploadedCourseList);
 
   if (ownedCourseList === null || uploadedCourseList === null) {
     return <h2>Loading</h2>;
@@ -41,6 +41,7 @@ function CourseList(props) {
       <div className="container">
         <NavTop />
         {RenderCourseList(props, ownedCourseList, uploadedCourseList)}
+        <Footer/>
       </div>
     );
   }
@@ -70,7 +71,11 @@ const RenderCourseList = (props, ownedCourseList, uploadedCourseList) => {
           </div>
           <div className="row">{setOwnedCourses(ownedCourseList)}</div>
         </div>
-        {props.auth.role === "teacher" ?  RenderUploadedCourseList(uploadedCourseList)  : <></>}
+        {props.auth.role === "teacher" ? (
+          RenderUploadedCourseList(uploadedCourseList)
+        ) : (
+          <></>
+        )}
       </div>
     );
   }
@@ -78,7 +83,7 @@ const RenderCourseList = (props, ownedCourseList, uploadedCourseList) => {
 
 const RenderUploadedCourseList = (uploadedCourseList) => {
   return (
-    <div className="container">
+    <div >
       <div className=" align-items-center mt-5 mb-3">
         <h4 className="text-left">Course Uploaded</h4>
         <hr />
@@ -101,6 +106,7 @@ const setOwnedCourses = (ownedCourseList) => {
         key={ownedCourseList[i].id}
         course={ownedCourseList[i]}
         ownerAccess={false}
+        isViwer={true}
         searchedCourse={false}
       ></Course>
     );
@@ -116,8 +122,9 @@ const setUploadedCourses = (uploadedCourseList) => {
       <Course
         key={uploadedCourseList[i].id}
         course={uploadedCourseList[i]}
-        ownerAccess = {true}
-        searchedCourse = {false}
+        ownerAccess={true}
+        isViwer={true}
+        searchedCourse={false}
       ></Course>
     );
   }
